@@ -1,0 +1,16 @@
+<main class="page projets-page">
+  <section class="portfolio-block project-no-images">
+    <div class="container breakWord">
+      <div class="row">
+        <div class="col-md-12 col-lg-12" *ngIf="simplante$ | async as simplante">
+          <div class="project-card-no-image">
+            <h3>{{simplante.auteur}}</h3>
+            <h4>{{simplante.contenu}}</h4>
+            <div class="tags">{{ simplante.date | date:'d MMM y HH:mm' }}</div>
+          </div>
+        </div>
+      </div>
+      <a class="btn btn-outline-primary btn-sm" role="button" (click)="goBack()">Go Back</a>
+    </div>
+  </section>
+</main>

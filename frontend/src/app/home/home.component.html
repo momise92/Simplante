@@ -1,0 +1,94 @@
+<main class="page lanidng-page">
+  <section class="portfolio-block block-intro">
+    <div class="avatar" style="background-image:url(&quot;../assets/img/simplanteLogo.jpg&quot;);"></div>
+    <div class="container">
+      <div class="about-me">
+        <p>{{ description }}</p><a class="btn btn-outline-primary" role="button" routerLink='/simplante'>Clique ici</a>
+      </div>
+    </div>
+  </section>
+  <section class="portfolio-block photography">
+    <div class="container">
+      <div class="row no-gutters">
+        <div class="col-md-4 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="assets/img/nature/image5.jpg"></a></div>
+        <div class="col-md-4 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="assets/img/nature/image2.jpg"></a></div>
+        <div class="col-md-4 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="assets/img/tech/image4.jpg"></a></div>
+      </div>
+    </div>
+  </section>
+  <section class="portfolio-block call-to-action border-bottom">
+    <div class="container breakWord">
+      <div class="heading">
+        <h3>Les trois derniers Simplantes</h3>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-lg-4" *ngFor="let s of pagesSimplante">
+          <div class="project-card-no-image">
+            <h3>{{s.auteur}}</h3>
+            <h4>{{s.contenu}}</h4>
+            <a class="btn btn-outline-primary btn-sm" role="button" [routerLink]="['/simplante', s.id]">See More</a>
+            <div class="tags">{{ s.date | date:'d MMM y HH:mm' }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio-block skills">
+    <div class="container">
+      <div class="heading">
+        <h3>Skills</h3>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card special-skill-item border-0">
+            <div class="card-header bg-transparent border-0"><i class="icon ion-ios-star-outline"></i></div>
+            <div class="card-body">
+              <h3 class="card-title">Une blague</h3>
+              <p class="card-text">Sur simplante vous pouvez nous raconter une blague, du moment qu'elle soit drôle.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card special-skill-item border-0">
+            <div class="card-header bg-transparent border-0"><i class="icon ion-ios-lightbulb-outline"></i></div>
+            <div class="card-body">
+              <h3 class="card-title">Une devinette</h3>
+              <p class="card-text">Sur simplante vous pouvez nous raconter une devinette.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card special-skill-item border-0">
+            <div class="card-header bg-transparent border-0"><i class="icon ion-ios-gear-outline"></i></div>
+            <div class="card-body">
+              <h3 class="card-title">Une Anecdote</h3>
+              <p class="card-text">Sur simplante vous pouvez nous raconter une anecdote de votre vie marrante ou pas,
+                et ainsi nous la partager.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="portfolio-block website gradient">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-12 col-lg-5 offset-lg-1 text">
+          <h3>Projet Simplante :</h3>
+          <p>Dans la V1.1 nous allons ajouter la possibilité de s'inscrire et se connecter afin d'ajouter des
+            simplantes, ceci permettra un meilleur contrôle des simplantes. Sur la page d'accueil nous afficherons les
+            3 derniers simplantes ajouté.</p>
+        </div>
+        <div class="col-md-12 col-lg-5">
+          <div class="portfolio-laptop-mockup">
+            <div class="screen">
+              <div class="screen-content" style="background-image:url(&quot;assets/img/tech/image6.png&quot;);"></div>
+            </div>
+            <div class="keyboard"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
