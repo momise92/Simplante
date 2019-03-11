@@ -1,4 +1,4 @@
-package com.blog.simplante.models;
+package com.blog.simplante.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -56,7 +56,7 @@ public class UserApp {
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<RoleApp> roles = new HashSet<>();
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "user", fetch =FetchType.LAZY, cascade = CascadeType.REMOVE)
     private Set<Comment> comments = new HashSet<>();
 
     public UserApp() {

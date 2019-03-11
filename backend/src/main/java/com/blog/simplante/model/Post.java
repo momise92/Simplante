@@ -1,4 +1,4 @@
-package com.blog.simplante.models;
+package com.blog.simplante.model;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -16,14 +16,14 @@ public class Post {
     private Long id;
 
     @Column(nullable = false, unique=true)
-    @Length(min = 5, max = 50, message = "*Your title must have at least 5 characters")
+    @Length(min = 5, max = 100, message = "*Your title must have at least 5 characters")
     private String title;
 
     @Column(nullable = false)
     private String body;
 
 
-    @Column(name = "create_date")
+    @Column(name = "create_date", updatable = false)
     private LocalDateTime createDate = LocalDateTime.now();
 
 
@@ -35,11 +35,16 @@ public class Post {
     @Column(nullable = false)
     private Boolean status = false;
 
-    @ManyToOne
-    private UserApp user;
+    private Long userId;
 
     @ManyToOne
-    @JoinColumn(name = "categorie_id", referencedColumnName = "categorie_id")
+    @JoinColumn(name ="userId", insertable = false, updatable = false)
+    private UserApp user;
+
+    private Long categoryId;
+
+    @ManyToOne
+    @JoinColumn(name = "categoryId", insertable = false, updatable = false)
     private Category category;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
@@ -118,12 +123,28 @@ public class Post {
         this.status = status;
     }
 
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
     public UserApp getUser() {
         return user;
     }
 
     public void setUser(UserApp user) {
         this.user = user;
+    }
+
+    public Long getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 
     public Category getCategory() {

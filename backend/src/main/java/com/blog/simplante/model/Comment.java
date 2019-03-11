@@ -1,6 +1,5 @@
-package com.blog.simplante.models;
+package com.blog.simplante.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -25,17 +24,19 @@ public class Comment {
     @CreationTimestamp
     private Date createDate;
 
-    @ManyToOne
-    @JoinColumn(name = "post_id", referencedColumnName = "post_id", nullable = false)
-    @NotNull
-    @JsonIgnore
-    private Post post;
+
+    private Long postId;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
-    @NotNull
-    @JsonIgnore
+    @JoinColumn(name = "postId", referencedColumnName = "post_id", insertable = false,updatable = false)
+    private Post post;
+
+    private Long userId;
+
+    @ManyToOne
+    @JoinColumn(name = "userId", referencedColumnName = "user_id", insertable = false,updatable = false)
     private UserApp user;
+
 
 
     public Comment() {
@@ -70,6 +71,14 @@ public class Comment {
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
+
+    public Long getPostId() { return postId; }
+
+    public void setPostId(Long postId) { this.postId = postId; }
+
+    public Long getUserId() { return userId; }
+
+    public void setUserId(Long userId) { this.userId = userId; }
 
     public Post getPost() {
         return post;

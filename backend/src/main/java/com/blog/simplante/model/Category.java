@@ -1,6 +1,4 @@
-package com.blog.simplante.models;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+package com.blog.simplante.model;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -11,15 +9,14 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "categorie_id")
+    @Column(name = "category_id")
     private Long id;
 
     @Column(name = "name", unique = true, length = 50)
     private String name;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.MERGE)
-    @JsonIgnore
-    private Set<Post> posts = new HashSet<Post>();
+    private Set<Post> posts = new HashSet<>();
 
 
     public Category() {
